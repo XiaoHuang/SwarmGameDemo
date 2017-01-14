@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1cdc620b891e5c045bc4b5604ec7b6e1
+timeCreated: 1484424196
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - droneHero: {instanceID: 0}
+  - prefab: {fileID: 100000, guid: 5a9adbc48345b7e43a29ff5b8a3b53bb, type: 2}
+  - heroPrefab: {fileID: 100000, guid: 77ed766b1d74cdd4499d857a9fd305ef, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

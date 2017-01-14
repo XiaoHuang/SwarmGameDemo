@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/Xiao/Downloads/SwarmWeng-master-youran/SwarmWeng-master/Swarm/Assets/Demo.unity
+  isLoaded: 1
+  isActive: 1
