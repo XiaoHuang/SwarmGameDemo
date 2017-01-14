@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6500000}
   - component: {fileID: 2300000}
   - component: {fileID: 5400000}
-  - component: {fileID: 114000013726261098}
+  - component: {fileID: 114444103447712452}
   m_Layer: 0
-  m_Name: EnemyDrone_Prefab
-  m_TagString: EnemyDrone
+  m_Name: EnemyDroneHero_Prefab
+  m_TagString: EnemyDroneHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
---- !u!114 &114000013726261098
+--- !u!114 &114444103447712452
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f52f6e85430414699851179bc77dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: b5a7d0ceb2e8f544881175842a8a6743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10

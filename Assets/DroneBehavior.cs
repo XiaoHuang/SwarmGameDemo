@@ -44,7 +44,6 @@ public class DroneBehavior : MonoBehaviour {
 		if (col.gameObject.tag == "EnemyDrone")
 		{
 			int die = Random.Range (0, 2);
-			Debug.Log (die);
 			if (die == 1) {
 				Destroy (col.gameObject);
 			}

@@ -12,10 +12,11 @@ public class EnemySwarmBehavior : MonoBehaviour {
 	public int droneCount = 200;
 	public float spawnRadius = 50f;
 	public List<GameObject> drones;
-
+	public GameObject enemyDroneHero;
 	public Vector2 swarmBounds = new Vector2(300f, 300f);
 
 	public GameObject prefab;
+	public GameObject enemyHeroPrefab;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -29,6 +30,22 @@ public class EnemySwarmBehavior : MonoBehaviour {
 		// instantiate the drones
 		GameObject droneTemp;
 		drones = new List<GameObject>();
+		enemyDroneHero = new GameObject();
+
+		// create droneHero
+		enemyHeroPrefab.tag = "EnemyDroneHero";
+		droneTemp = (GameObject) GameObject.Instantiate(enemyHeroPrefab);
+		droneTemp.GetComponent<Renderer> ().material.color = Color.green;
+
+		EnemyDroneHeroBehavior dbHero = droneTemp.GetComponent<EnemyDroneHeroBehavior>();
+		Debug.Log (this.drones);
+		Debug.Log (dbHero);
+		dbHero.drones = this.drones;
+		dbHero.swarm = this;
+		dbHero.enemyDroneHero = droneTemp;
+		this.enemyDroneHero = droneTemp;
+
+
 		for (int i = 0; i < droneCount; i++)
 		{
 			prefab.tag = "EnemyDrone";
@@ -39,6 +56,7 @@ public class EnemySwarmBehavior : MonoBehaviour {
 			Debug.Log (db);
 			db.drones = this.drones;
 			db.swarm = this;
+			db.enemyDroneHero = this.enemyDroneHero;
 
 			// spawn inside circle
 			Vector2 pos = new Vector2(transform.position.x, transform.position.z) + Random.insideUnitCircle * spawnRadius;

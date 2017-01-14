@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6420B694-4844-1200-6BC0-A31785F69521}</ProjectGuid>
+    <ProjectGuid>{4222EC8F-6B37-1B02-E0F0-EDE8444BA6D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -49,6 +49,7 @@
      <Compile Include="Assets\DroneBehavior.cs" />
      <Compile Include="Assets\DroneHeroBehavior.cs" />
      <Compile Include="Assets\EnemyDroneBehavior.cs" />
+     <Compile Include="Assets\EnemyDroneHeroBehavior.cs" />
      <Compile Include="Assets\EnemySwarmBehavior.cs" />
      <Compile Include="Assets\GrabberController.cs" />
      <Compile Include="Assets\ObjectGrabberBehavior.cs" />

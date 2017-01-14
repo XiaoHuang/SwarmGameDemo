@@ -16,6 +16,7 @@ public class EnemyDroneBehavior : MonoBehaviour {
 	public float alignmentWeight = 1f;
 	public float cohesionWeight = 1f;
 	public float boundsWeight = 1f;
+	public float heroWeight = 1f;
 
 	public float neighborRadius = 50f;
 	public float desiredSeparation = 6f;
@@ -25,10 +26,12 @@ public class EnemyDroneBehavior : MonoBehaviour {
 	public Vector3 _alignment;
 	public Vector3 _cohesion;
 	public Vector3 _bounds;
+	public Vector3 _heroEffects;
 
 	// other members of my swarm
 	public List<GameObject> drones;
 	public EnemySwarmBehavior swarm;
+	public GameObject enemyDroneHero;
 
 	void FixedUpdate()
 	{
@@ -70,6 +73,7 @@ public class EnemyDroneBehavior : MonoBehaviour {
 		newVelocity += _alignment * alignmentWeight;
 		newVelocity += _cohesion * cohesionWeight;
 		newVelocity += _bounds * boundsWeight;
+		newVelocity += _heroEffects * heroWeight;
 		newVelocity = newVelocity * speed;
 		newVelocity = GetComponent<Rigidbody>().velocity + newVelocity;
 		newVelocity.y = 0f;
@@ -144,6 +148,7 @@ public class EnemyDroneBehavior : MonoBehaviour {
 		_alignment = alignmentCount > 0 ? Limit(alignmentSum / alignmentCount, maxSteer) : alignmentSum;
 		_cohesion = cohesionCount > 0 ? Steer(cohesionSum / cohesionCount, false) : cohesionSum;
 		_bounds = boundsCount > 0 ? Steer(boundsSum / boundsCount, false) : boundsSum;
+		_heroEffects = Steer(enemyDroneHero.transform.position, false);
 	}
 
 	/// <summary>

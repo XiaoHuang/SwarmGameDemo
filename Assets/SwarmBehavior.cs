@@ -38,8 +38,6 @@ public class SwarmBehavior : MonoBehaviour {
 		droneTemp.GetComponent<Renderer> ().material.color = Color.yellow;
 
 		DroneHeroBehavior dbHero = droneTemp.GetComponent<DroneHeroBehavior>();
-		Debug.Log (this.drones);
-		Debug.Log (dbHero);
 		dbHero.drones = this.drones;
 		dbHero.swarm = this;
 		dbHero.droneHero = droneTemp;
