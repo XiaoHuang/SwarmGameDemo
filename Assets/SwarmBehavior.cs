@@ -30,25 +30,7 @@ public class SwarmBehavior : MonoBehaviour {
 		// instantiate the drones
 		GameObject droneTemp;
 		drones = new List<GameObject>();
-		droneHero = new GameObject();
-
-		// create droneHero
-		heroPrefab.tag = "DroneHero";
-		droneTemp = (GameObject) GameObject.Instantiate(heroPrefab);
-		droneTemp.GetComponent<Renderer> ().material.color = Color.yellow;
-
-		DroneHeroBehavior dbHero = droneTemp.GetComponent<DroneHeroBehavior>();
-		dbHero.drones = this.drones;
-		dbHero.swarm = this;
-		dbHero.droneHero = droneTemp;
-		this.droneHero = droneTemp;
-
-		// spawn inside circle
-		Vector2 pos = new Vector2(transform.position.x, transform.position.z) + Random.insideUnitCircle * spawnRadius;
-		droneTemp.transform.position = new Vector3(pos.x, transform.position.y, pos.y);
-		droneTemp.transform.parent = transform;
-
-		drones.Add(droneTemp);
+		drones.Add(droneHero);
 
 		// create all drones;
 		for (int i = 1; i < droneCount; i++)
@@ -63,7 +45,7 @@ public class SwarmBehavior : MonoBehaviour {
 			db.droneHero = this.droneHero;
 
 			// spawn inside circle
-			pos = new Vector2(transform.position.x, transform.position.z) + Random.insideUnitCircle * spawnRadius;
+			Vector2 pos = new Vector2(transform.position.x, transform.position.z) + Random.insideUnitCircle * spawnRadius;
 			droneTemp.transform.position = new Vector3(pos.x, transform.position.y, pos.y);
 			droneTemp.transform.parent = transform;
 			

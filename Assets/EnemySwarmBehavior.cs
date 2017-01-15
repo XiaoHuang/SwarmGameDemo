@@ -38,22 +38,19 @@ public class EnemySwarmBehavior : MonoBehaviour {
 		droneTemp.GetComponent<Renderer> ().material.color = Color.green;
 
 		EnemyDroneHeroBehavior dbHero = droneTemp.GetComponent<EnemyDroneHeroBehavior>();
-		Debug.Log (this.drones);
-		Debug.Log (dbHero);
 		dbHero.drones = this.drones;
 		dbHero.swarm = this;
 		dbHero.enemyDroneHero = droneTemp;
 		this.enemyDroneHero = droneTemp;
 
 
-		for (int i = 0; i < droneCount; i++)
+		for (int i = 1; i < droneCount; i++)
 		{
 			prefab.tag = "EnemyDrone";
 			droneTemp = (GameObject) GameObject.Instantiate(prefab);
 			droneTemp.GetComponent<Renderer> ().material.color = Color.blue;
 
 			EnemyDroneBehavior db = droneTemp.GetComponent<EnemyDroneBehavior>();
-			Debug.Log (db);
 			db.drones = this.drones;
 			db.swarm = this;
 			db.enemyDroneHero = this.enemyDroneHero;

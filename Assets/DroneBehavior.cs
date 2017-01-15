@@ -16,7 +16,7 @@ public class DroneBehavior : MonoBehaviour {
 	public float alignmentWeight = 1f;
 	public float cohesionWeight = 1f;
 	public float boundsWeight = 1f;
-	public float heroWeight = 1f;
+	public float heroWeight = 2f;
 
 	public float neighborRadius = 50f;
 	public float desiredSeparation = 6f;
