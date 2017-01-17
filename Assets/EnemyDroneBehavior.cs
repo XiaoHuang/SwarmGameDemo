@@ -41,7 +41,7 @@ public class EnemyDroneBehavior : MonoBehaviour {
 
 	protected virtual void Start()
 	{
-
+		GetComponent<Rigidbody> ().freezeRotation = true;
 	}
 
 	protected virtual void Update()

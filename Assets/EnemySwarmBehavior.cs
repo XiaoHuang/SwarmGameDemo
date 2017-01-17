@@ -37,6 +37,8 @@ public class EnemySwarmBehavior : MonoBehaviour {
 		droneTemp = (GameObject) GameObject.Instantiate(enemyHeroPrefab);
 		droneTemp.GetComponent<Renderer> ().material.color = Color.green;
 
+		droneTemp.transform.position = new Vector3 (0, 0, 100);
+
 		EnemyDroneHeroBehavior dbHero = droneTemp.GetComponent<EnemyDroneHeroBehavior>();
 		dbHero.drones = this.drones;
 		dbHero.swarm = this;

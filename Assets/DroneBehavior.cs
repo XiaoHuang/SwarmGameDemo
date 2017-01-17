@@ -32,6 +32,8 @@ public class DroneBehavior : MonoBehaviour {
 	public List<GameObject> drones;
 	public SwarmBehavior swarm;
 	public GameObject droneHero;
+	public DroneHeroBehavior dbHeroBehavior;
+	public Vector3 targetPosition;
 
 	void FixedUpdate()
 	{
@@ -48,36 +50,52 @@ public class DroneBehavior : MonoBehaviour {
 				Destroy (col.gameObject);
 			}
 		}
+		if (col.gameObject.tag == "Drone") {
+			Physics.IgnoreCollision (col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+		}
 	}
 
 	protected virtual void Start()
 	{
-
+		GetComponent<Rigidbody> ().freezeRotation = true;
+		dbHeroBehavior = droneHero.GetComponent<DroneHeroBehavior> ();	
 	}
 
 	protected virtual void Update()
 	{
-
+		if (swarm.state == SwarmBehavior.SwarmState.FORMATION) {
+			GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			transform.position = Vector3.MoveTowards (transform.position, targetPosition, Time.deltaTime * speed);
+		}
 	}
 
 	public virtual void Flock()
 	{
 
 		Vector3 newVelocity = Vector3.zero;
+		if (swarm.state == SwarmBehavior.SwarmState.DEFUALT) {
+			float moveHorizontal = dbHeroBehavior.heroSpeed * Input.GetAxis ("Horizontal");
+			float moveVertical = dbHeroBehavior.heroSpeed * Input.GetAxis ("Vertical");
 
-		CalculateVelocities();
+			newVelocity = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+			GetComponent<Rigidbody>().velocity =  Limit(newVelocity, dbHeroBehavior.maxHeroSpeed);
+		}
+		else if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
+			CalculateVelocities ();
 
-		//transform.forward = _alignment;
-		newVelocity += _separation * separationWeight;
-		newVelocity += _alignment * alignmentWeight;
-		newVelocity += _cohesion * cohesionWeight;
-		newVelocity += _bounds * boundsWeight;
-		newVelocity += _heroEffects * heroWeight;
-		newVelocity = newVelocity * speed;
-		newVelocity = GetComponent<Rigidbody>().velocity + newVelocity;
-		newVelocity.y = 0f;
-
-		GetComponent<Rigidbody>().velocity = Limit(newVelocity, maxSpeed);
+			//transform.forward = _alignment;
+			newVelocity += _separation * separationWeight;
+			newVelocity += _alignment * alignmentWeight;
+			newVelocity += _cohesion * cohesionWeight;
+			newVelocity += _bounds * boundsWeight;
+			newVelocity += _heroEffects * heroWeight;
+			newVelocity = newVelocity * speed;
+			newVelocity = GetComponent<Rigidbody> ().velocity + newVelocity;
+			newVelocity.y = 0f;
+			GetComponent<Rigidbody> ().velocity = Limit (newVelocity, maxSpeed);
+		} else if (swarm.state == SwarmBehavior.SwarmState.HALT) {
+			GetComponent<Rigidbody> ().velocity = newVelocity;
+		} 
 	}
 
 	/// <summary>

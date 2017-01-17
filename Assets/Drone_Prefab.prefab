@@ -116,7 +116,7 @@ MonoBehaviour:
   alignmentWeight: 1
   cohesionWeight: 1
   boundsWeight: 1
-  heroWeight: 1
+  heroWeight: 2
   neighborRadius: 30
   desiredSeparation: 10
   _separation: {x: 0, y: 0, z: 0}
@@ -127,6 +127,8 @@ MonoBehaviour:
   drones: []
   swarm: {fileID: 0}
   droneHero: {fileID: 0}
+  dbHeroBehavior: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
