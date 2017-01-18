@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class DroneHeroBehavior : MonoBehaviour {
 	public float heroSpeed = 20.0F;
-	public float maxHeroSpeed = 50.0F;
+	public float maxHeroSpeed = 30.0F;
+	public SwarmBehavior swarm;
 
 	void Start() {
 		GetComponent<Rigidbody> ().freezeRotation = true;
@@ -23,6 +24,14 @@ public class DroneHeroBehavior : MonoBehaviour {
 
 		Vector3 newVelocity = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		GetComponent<Rigidbody>().velocity =  Limit(newVelocity, maxHeroSpeed);
+
+		if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
+			this.heroSpeed = 40f;	
+			this.maxHeroSpeed = 60f;
+		} else {
+			this.heroSpeed = 20f;
+			this.maxHeroSpeed = 30f;
+		}
 	}
 
 	protected virtual Vector3 Limit(Vector3 v, float max)

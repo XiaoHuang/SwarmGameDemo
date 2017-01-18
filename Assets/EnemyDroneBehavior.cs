@@ -51,7 +51,7 @@ public class EnemyDroneBehavior : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.tag == "Drone")
+		if (col.gameObject.tag == "Drone" && this.gameObject.tag != "EnemyDroneHero")
 		{
 			int die = Random.Range (0, 2);
 			if (die == 1) {

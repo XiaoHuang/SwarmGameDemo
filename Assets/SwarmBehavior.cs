@@ -34,6 +34,8 @@ public class SwarmBehavior : MonoBehaviour {
 		// instantiate the drones
 		GameObject droneTemp;
 		drones = new List<GameObject>();
+		DroneHeroBehavior dbHero = droneHero.GetComponent<DroneHeroBehavior> ();	
+		dbHero.swarm = this;
 
 		// create all drones;
 		for (int i = 0; i < droneCount; i++) {
@@ -80,7 +82,7 @@ public class SwarmBehavior : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.F)) {
 			state = SwarmState.FORMATION;
 			this.formation ();
-		} else if (Input.GetKeyDown (KeyCode.E)) {
+		} else if (Input.GetKeyDown (KeyCode.M)) {
 			state = SwarmState.DEFUALT;
 		} else if (Input.anyKeyDown && state == SwarmState.FORMATION) {
 			state = SwarmState.DEFUALT;
@@ -104,14 +106,14 @@ public class SwarmBehavior : MonoBehaviour {
 		int j = 0;
 		for (int i = 0; i < this.drones.Count; i++) {
 			
-			if (j % lineCount == 0 && j != 0) {
-				increment_z = increment_z - width;
-				increment_x = - width * ((float)lineCount - 1.0f) / 2;
-			}
-
 			GameObject droneTemp = this.drones[i];
 
 			if (droneTemp != null) {
+				if (j % lineCount == 0 && j != 0) {
+					increment_z = increment_z - width;
+					increment_x = - width * ((float)lineCount - 1.0f) / 2;
+				}
+
 				float drone_x = droneHero.transform.position.x + increment_x;
 				float drone_y = droneHero.transform.position.y;
 				float drone_z = droneHero.transform.position.z + increment_z;

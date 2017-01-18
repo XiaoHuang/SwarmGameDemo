@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class DroneBehavior : MonoBehaviour {
 
 	// the overall speed of the simulation
-	public float speed = 10f;
+	public float speed = 20f;
 	// max speed any particular drone can move at
-	public float maxSpeed = 20f;
+	public float maxSpeed = 30f;
 	// maximum steering power
 	public float maxSteer = .05f;
 
@@ -18,7 +18,7 @@ public class DroneBehavior : MonoBehaviour {
 	public float boundsWeight = 1f;
 	public float heroWeight = 2f;
 
-	public float neighborRadius = 50f;
+	public float neighborRadius = 1f;
 	public float desiredSeparation = 6f;
 
 	// velocity influences
@@ -66,6 +66,13 @@ public class DroneBehavior : MonoBehaviour {
 		if (swarm.state == SwarmBehavior.SwarmState.FORMATION) {
 			GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			transform.position = Vector3.MoveTowards (transform.position, targetPosition, Time.deltaTime * speed);
+		}
+		if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
+			this.speed = 40f;	
+			this.maxSpeed = 60f;
+		} else {
+			this.speed = 20f;
+			this.maxSpeed = 30f;
 		}
 	}
 
