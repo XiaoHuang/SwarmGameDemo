@@ -99,7 +99,7 @@ public class SwarmBehavior : MonoBehaviour {
 	public void formation() {
 		float increment_x = 0f;
 		float increment_z = 0f;
-		float width = 10f;
+		float width = 5f;
 		int lineCount = 10;
 		increment_z = increment_z - width;
 		increment_x = - width * ((float)lineCount - 1.0f) / 2;
