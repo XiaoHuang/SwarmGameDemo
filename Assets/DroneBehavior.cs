@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class DroneBehavior : MonoBehaviour {
 
 	// the overall speed of the simulation
-	public float speed = 20f;
+	public float speed = 10f;
 	// max speed any particular drone can move at
-	public float maxSpeed = 30f;
+	public float maxSpeed = 20f;
 	// maximum steering power
 	public float maxSteer = .05f;
 
@@ -50,9 +50,6 @@ public class DroneBehavior : MonoBehaviour {
 				Destroy (col.gameObject);
 			}
 		}
-		if (col.gameObject.tag == "Drone") {
-			Physics.IgnoreCollision (col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
-		}
 	}
 
 	protected virtual void Start()
@@ -63,16 +60,25 @@ public class DroneBehavior : MonoBehaviour {
 
 	protected virtual void Update()
 	{
+
 		if (swarm.state == SwarmBehavior.SwarmState.FORMATION) {
 			GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			transform.position = Vector3.MoveTowards (transform.position, targetPosition, Time.deltaTime * speed);
 		}
 		if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
-			this.speed = 40f;	
-			this.maxSpeed = 60f;
-		} else {
-			this.speed = 20f;
+			this.speed = 20f;	
 			this.maxSpeed = 30f;
+		} else {
+			this.speed = 5f;
+			this.maxSpeed = 20f;
+		}
+
+		if (swarm.state == SwarmBehavior.SwarmState.DEFUALT) {
+			float moveHorizontal = dbHeroBehavior.heroSpeed * Input.GetAxis ("Horizontal");
+			float moveVertical = dbHeroBehavior.heroSpeed * Input.GetAxis ("Vertical");
+
+			Vector3 newVelocity = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+			GetComponent<Rigidbody>().velocity =  Limit(newVelocity, dbHeroBehavior.maxHeroSpeed);
 		}
 	}
 
@@ -80,14 +86,7 @@ public class DroneBehavior : MonoBehaviour {
 	{
 
 		Vector3 newVelocity = Vector3.zero;
-		if (swarm.state == SwarmBehavior.SwarmState.DEFUALT) {
-			float moveHorizontal = dbHeroBehavior.heroSpeed * Input.GetAxis ("Horizontal");
-			float moveVertical = dbHeroBehavior.heroSpeed * Input.GetAxis ("Vertical");
-
-			newVelocity = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-			GetComponent<Rigidbody>().velocity =  Limit(newVelocity, dbHeroBehavior.maxHeroSpeed);
-		}
-		else if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
+		if (swarm.state == SwarmBehavior.SwarmState.SWARM) {
 			CalculateVelocities ();
 
 			//transform.forward = _alignment;

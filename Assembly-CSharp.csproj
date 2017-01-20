@@ -54,6 +54,9 @@
      <Compile Include="Assets\GrabberController.cs" />
      <Compile Include="Assets\ObjectGrabberBehavior.cs" />
      <Compile Include="Assets\SwarmBehavior.cs" />
+     <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\IKHands.cs" />
+     <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\SmoothFollow.cs" />
+     <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\WarriorAnimationDemoFREE.cs" />
      <None Include="Assets\License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

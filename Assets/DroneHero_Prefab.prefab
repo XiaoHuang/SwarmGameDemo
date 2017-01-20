@@ -120,21 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64096023c6e476f408f46e0e4c696218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  maxSpeed: 30
-  maxSteer: 0.05
-  separationWeight: 2
-  alignmentWeight: 1
-  cohesionWeight: 1
-  boundsWeight: 1
-  heroWeight: 1
-  neighborRadius: 30
-  desiredSeparation: 10
-  _separation: {x: 0, y: 0, z: 0}
-  _alignment: {x: 0, y: 0, z: 0}
-  _cohesion: {x: 0, y: 0, z: 0}
-  _bounds: {x: 0, y: 0, z: 0}
-  _heroEffects: {x: 0, y: 0, z: 0}
-  drones: []
+  heroSpeed: 20
+  maxHeroSpeed: 50
   swarm: {fileID: 0}
-  droneHero: {fileID: 0}

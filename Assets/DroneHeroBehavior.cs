@@ -29,7 +29,7 @@ public class DroneHeroBehavior : MonoBehaviour {
 			this.heroSpeed = 40f;	
 			this.maxHeroSpeed = 60f;
 		} else {
-			this.heroSpeed = 20f;
+			this.heroSpeed = 10f;
 			this.maxHeroSpeed = 30f;
 		}
 	}

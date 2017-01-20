@@ -128,7 +128,7 @@ MonoBehaviour:
   cohesionWeight: 1
   boundsWeight: 1
   heroWeight: 1
-  neighborRadius: 50
+  neighborRadius: 1
   desiredSeparation: 6
   _separation: {x: 0, y: 0, z: 0}
   _alignment: {x: 0, y: 0, z: 0}

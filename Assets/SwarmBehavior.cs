@@ -34,6 +34,7 @@ public class SwarmBehavior : MonoBehaviour {
 		// instantiate the drones
 		GameObject droneTemp;
 		drones = new List<GameObject>();
+		//droneHero = (GameObject) GameObject.Instantiate(heroPrefab);
 		DroneHeroBehavior dbHero = droneHero.GetComponent<DroneHeroBehavior> ();	
 		dbHero.swarm = this;
 
